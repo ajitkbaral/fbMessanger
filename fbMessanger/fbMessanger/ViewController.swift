@@ -8,10 +8,16 @@
 
 import UIKit
 
+
 class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
     
     //Making the cell identifier safe
     private let cellId = "cellId"
+    
+    var messages: [Message]?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,26 +33,49 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         
         
         //Register the cell with the identifier
-        collectionView?.register(FriendCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
+        
+        
+        //Setting up the data
+        setupData()
     }
     
     
     //Setting the number of sections
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if let count = messages?.count{
+            return count
+        }
+        return 0
     }
     
     
     //Reusing the cell for the section
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
+        
+        //Receiving each message from the messages
+        if let message = messages?[indexPath.item]{
+            cell.message = message
+        }
+        return cell
     }
-    
     
     
     //Sizing the cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)//Take full with for the view and hight of 100 points
+        return CGSize(width: view.frame.width, height: 100)//Take full with for the view and hight of 100 px
+    }
+    
+    
+    //Fires when an item is selected
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let layout = UICollectionViewFlowLayout()
+        
+        let controller = ChatLogController(collectionViewLayout: layout)
+        controller.friend = messages?[indexPath.item].friend
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
 
 
@@ -54,7 +83,33 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
 }
 
 //Creating a cell
-class FriendCell: BaseCell{
+class MessageCell: BaseCell{
+    
+    var message: Message? {
+        didSet{
+            
+            //Setting up the namelabel to the friend's name
+            nameLabel.text = message?.friend?.name
+            
+            //Setting up the profileImageName to the friend's profile Image Name
+            if let profileImageName = message?.friend?.profileImageName{
+                
+                profileImageView.image = UIImage(named: profileImageName)
+                hasReadImageView.image = UIImage(named: profileImageName)
+            }
+            
+            messageLabel.text = message?.text
+            
+            //Setting the date to the required format
+            if let date = message?.date{
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:m a"
+                
+                timelabel.text = dateFormatter.string(from: date as Date)
+                
+            }
+        }
+    }
     
     //Creating an ImageView for the profile image
     let profileImageView: UIImageView = {
@@ -124,7 +179,7 @@ class FriendCell: BaseCell{
         profileImageView.image = UIImage(named: "me.jpg")
         
         //Setting the has read image
-        hasReadImageView.image = UIImage(named: "me.jpg")
+        hasReadImageView.image = UIImage(named: "ajit.jpg")
         
         //Using the addConstraints to the image
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -256,7 +311,7 @@ class BaseCell: UICollectionViewCell{
     func setupViews(){
         
         //Setting the background color of the base cell
-        backgroundColor = UIColor.blue
+        //backgroundColor = UIColor.blue
     }
     
 }

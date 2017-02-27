@@ -12,6 +12,8 @@
 		48D489941E611EE600E06BC1 /* fbMessanger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48D489921E611EE600E06BC1 /* fbMessanger.xcdatamodeld */; };
 		48D489961E611EE600E06BC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D489951E611EE600E06BC1 /* Assets.xcassets */; };
 		48D489991E611EE600E06BC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D489971E611EE600E06BC1 /* LaunchScreen.storyboard */; };
+		48D489A11E617DB700E06BC1 /* FriendsControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D489A01E617DB700E06BC1 /* FriendsControllerHelper.swift */; };
+		48D489DD1E61B5E500E06BC1 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D489DC1E61B5E500E06BC1 /* ChatLogController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		48D489951E611EE600E06BC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48D489981E611EE600E06BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D4899A1E611EE600E06BC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48D489A01E617DB700E06BC1 /* FriendsControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsControllerHelper.swift; sourceTree = "<group>"; };
+		48D489DC1E61B5E500E06BC1 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				48D489971E611EE600E06BC1 /* LaunchScreen.storyboard */,
 				48D4899A1E611EE600E06BC1 /* Info.plist */,
 				48D489921E611EE600E06BC1 /* fbMessanger.xcdatamodeld */,
+				48D489A01E617DB700E06BC1 /* FriendsControllerHelper.swift */,
+				48D489DC1E61B5E500E06BC1 /* ChatLogController.swift */,
 			);
 			path = fbMessanger;
 			sourceTree = "<group>";
@@ -135,9 +141,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D489DD1E61B5E500E06BC1 /* ChatLogController.swift in Sources */,
 				48D489941E611EE600E06BC1 /* fbMessanger.xcdatamodeld in Sources */,
 				48D4898E1E611EE600E06BC1 /* ViewController.swift in Sources */,
 				48D4898C1E611EE600E06BC1 /* AppDelegate.swift in Sources */,
+				48D489A11E617DB700E06BC1 /* FriendsControllerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
